@@ -7,6 +7,8 @@ const app = express();
 
 const conn = require('./db/conn')
 
+const productRoutes = require('./routes/products.routes')
+
 app.engine('handlebars', exphbs.engine());
 app.set('view engine', 'handlebars')
 
@@ -18,6 +20,7 @@ app.use(
 
 app.use(express.json());
 
+app.use('/products', productRoutes)
 
 app.listen(() => {
     console.log(`Servidor rodando na porta http://localhost:${port}`)
