@@ -1,6 +1,6 @@
+require('dotenv').config();
 const express = require('express');
 const exphbs = require('express-handlebars');
-require('dotenv').config();
 
 const port = process.env.PORT || 3006
 const app = express();
@@ -20,8 +20,10 @@ app.use(
 
 app.use(express.json());
 
+app.use(express.static('public'));
+
 app.use('/products', productRoutes)
 
-app.listen(() => {
+app.listen(port, () => {
     console.log(`Servidor rodando na porta http://localhost:${port}`)
 })
