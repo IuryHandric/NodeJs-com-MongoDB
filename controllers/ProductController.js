@@ -35,5 +35,14 @@ module.exports = class ProductController {
 
     }
 
+    static async removeProduct(req, res) {
+        const id = req.params.id
+
+        await Product.removeProductById(id)
+        console.log('Produto exluído com sucesso!')
+        res.redirect('/products')
+
+    }
+
 
 }
