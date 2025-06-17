@@ -50,6 +50,15 @@ class Product {
         return product
     }
 
+    // Update em 01 produto
+
+    updateProduct(id) {
+      // método set para informar oque será atualizado
+        const product = conn.db().collection('products').updateOne({_id: new ObjectId(id)}, {$set: this})
+
+        return product
+    }
+
 }
 
 module.exports = Product
