@@ -44,5 +44,13 @@ module.exports = class ProductController {
 
     }
 
+    static async editProduct(req, res) {
+        const id = req.params.id
+
+        const product = await Product.getProductById(id)
+
+        res.render('products/edit', { product })
+    }
+
 
 }
