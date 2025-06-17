@@ -1,5 +1,9 @@
 const conn = require('../db/conn')
 
+
+// Para conseguir ler o ObjectId no mongoDB
+const {ObjectId} = require('mongodb')
+
 // Criando classe
 
 class Product {
@@ -32,6 +36,12 @@ class Product {
         const products = conn.db().collection('products').find().toArray()
 
         return products
+    }
+
+    static async getProductById(id) {
+        const product = await conn.db().collection('products').findOne({_id: new ObjectId(id)})
+
+        return product
     }
 
 }
